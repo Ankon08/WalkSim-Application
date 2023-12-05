@@ -63,21 +63,40 @@ public class RandomWalkerTest {
         assertEquals(path.size(),0, "Expected empty path with negative steps.");
     }
 
-
+    /**
+     * Unit test for the common saveWalkToFile method in the RandomWalker class.
+     * It checks the behavior of the method when saving the walk to both a .txt file and a .dat file.
+     *
+     * - commenting this method only as this is the only method I am working on
+     *   for this class - Ankon
+     */
     @Test
     void saveWalkToFile_Common() {
         RandomWalker walker = new RandomWalker(testMC1);
-        String path = "_saveWalkToFile_Common_UnitTest.txt";
+        String pathTxt = "_saveWalkToFile_Common_UnitTest.txt";
+        String pathDat = "_saveWalkToFile_Common_UnitTest.dat";
+
         try {
-            File fp = new File(path);
-            assertFalse(fp.exists(), "Pre-condition: file should not yet exist.");
+            // Pre-condition: Ensure that the .txt and .dat files do not exist before saving
+            File fpTxt = new File(pathTxt);
+            File fpDat = new File(pathDat);
+            assertFalse(fpTxt.exists(), "Pre-condition: .txt file should not yet exist.");
+            assertFalse(fpDat.exists(), "Pre-condition: .dat file should not yet exist.");
 
-            walker.saveWalkToFile(path);
+            // Save the walk to both .txt and .dat files
+            walker.saveWalkToFile(pathTxt);
+            walker.saveWalkToFile(pathDat);
 
-            assertTrue(fp.exists(), "File should exist after writing to it with no IOExeception.");
-            assertTrue(fp.delete(), "Expected to be able to delete file after writing to it.");
+            // Post-condition: Ensure that the .txt and .dat files exist after saving
+            assertTrue(fpTxt.exists(), ".txt file should exist after writing to it with no IOException.");
+            assertTrue(fpDat.exists(), ".dat file should exist after writing to it with no IOException.");
+
+            // Clean-up: Delete the .txt and .dat files after the test
+            assertTrue(fpTxt.delete(), "Expected to be able to delete .txt file after writing to it.");
+            assertTrue(fpDat.delete(), "Expected to be able to delete .dat file after writing to it.");
         } catch (IOException e) {
-            fail("Exception occurred while trying to save walk to the file: " + path);
+            // Fail the test if an exception occurs during the saveWalkToFile method
+            fail("Exception occurred while trying to save walk to the file.");
         }
     }
 
