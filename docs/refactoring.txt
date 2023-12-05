@@ -1,0 +1,10 @@
+Name - Ankon Biswas
+ID   - B00915283
+
+Refactoring
+
+1. File: WalkSim.java
+   Location (method/approx. line #): main(String[] args), Line 35,48,59,87 and 1577
+   Issue Identified: Magic numbers used to represent different walker types.
+   Description of fix: Used named constants or an enum to make the code more readable.
+

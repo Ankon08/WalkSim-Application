@@ -15,6 +15,10 @@ import java.util.Scanner;
 
 public class WalkSim {
 
+    public static final int BREADCRUMB_WALK = 2;
+    public static final int RANDOM_WALK = 0;
+    public static final int SPIRAL_WALK = 1;
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
@@ -28,7 +32,7 @@ public class WalkSim {
         String fileName = "";
 
         // For random walk and breadcrumb walk, prompt the user to enter the file name for FloatMatrix
-        if (walkType == 0 || walkType == 2) {
+        if (walkType == RANDOM_WALK || walkType == BREADCRUMB_WALK) {
             fileName = readFileName(in, "Enter the file name for FloatMatrix: ");
         }
 
@@ -41,7 +45,7 @@ public class WalkSim {
 
         try {
             // If the walker type is random walk or breadcrumb walk, read the FloatMatrix from the specified file
-            if (walkType == 0 || walkType == 2) {
+            if (walkType == RANDOM_WALK || walkType == BREADCRUMB_WALK) {
                 // Check if the file name for FloatMatrix is provided
                 if (!fileName.isEmpty()) {
                     // Read the FloatMatrix from the file
@@ -52,7 +56,7 @@ public class WalkSim {
                     System.out.println(T1.prettyString());
 
                     // If the walker type is random walk, create a MarkovChain and RandomWalker
-                    if (walkType == 0) {
+                    if (walkType == RANDOM_WALK) {
                         MarkovChain mc = new MarkovChain(T1, cardinals);
                         RandomWalker walker = new RandomWalker(mc);
                         ArrayList<Coordinate> theWalk = walker.walk(nSteps);
@@ -80,7 +84,7 @@ public class WalkSim {
                 }
             }
             // If the walker type is spiral walk, create a SpiralWalker
-            else if (walkType == 1) {
+            else if (walkType == SPIRAL_WALK) {
                 SpiralWalker spiralWalker = new SpiralWalker();
                 ArrayList<Coordinate> theWalk = spiralWalker.walk(nSteps);
                 spiralWalker.saveWalkToFile(outputFile);
@@ -150,7 +154,7 @@ public class WalkSim {
         int walkerType = -1;
 
         // Continue prompting the user until a valid walker type is provided
-        while (walkerType < 0 || walkerType > 2) {
+        while (walkerType < RANDOM_WALK || walkerType > BREADCRUMB_WALK) {
             System.out.print("Enter the walker type (0 for Random, 1 for Spiral, 2 for Bread crumb): ");
             // Check if the next input is an integer
             if (in.hasNextInt()) {
