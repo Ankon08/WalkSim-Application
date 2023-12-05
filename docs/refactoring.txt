@@ -8,3 +8,8 @@ Refactoring
    Issue Identified: Magic numbers used to represent different walker types.
    Description of fix: Used named constants or an enum to make the code more readable.
 
+2. File: SpiralWalker.java
+   Location (method/approx. line #): walk(int Nsteps), Line 47 and 52
+   Issue Identified: The logic for adding the current position to the path is repeated in the walk method.
+   Description of fix: Moved the path update logic into a separate method to avoid code duplication.
+

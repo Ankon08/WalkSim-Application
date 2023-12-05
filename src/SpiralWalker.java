@@ -44,15 +44,19 @@ public class SpiralWalker {
         path.clear(); // Reset the path for this new walk.
 
         if (N > 0) {
-            path.add(new Coordinate(curPos.x, curPos.y));
+            addToPath();
         }
 
         for (int step = 0; step < N; ++step) {
             spiralStep();
-            path.add(new Coordinate(curPos.x, curPos.y));
+            addToPath();
         }
 
         return path;
+    }
+
+    private void addToPath() {
+        path.add(new Coordinate(curPos.x, curPos.y));
     }
 
     /**
