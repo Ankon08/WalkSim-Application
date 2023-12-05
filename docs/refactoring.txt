@@ -13,3 +13,10 @@ Refactoring
    Issue Identified: The logic for adding the current position to the path is repeated in the walk method.
    Description of fix: Moved the path update logic into a separate method to avoid code duplication.
 
+3. File: RandomWalker.java and BreadCrumbWalker.java
+   Location (method/approx. line #): RandomWalker.java - getStepDirection() Line 105,107 and 109
+			                         BreadCrumbWalker.java - getStepDirection() Line 122,124 and 126
+   Issue Identified: The constants "N," "E," "S," "W" are hardcoded in the getStepDirection method.
+   Description of fix: Consider using an enum or constants for cardinal directions to enhance readability
+                       and avoid magic strings.
+

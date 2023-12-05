@@ -19,6 +19,9 @@ public class BreadCrumbWalker {
     public static final int START_X = 0;
     public static final int START_Y = 0;
     public static final int STEP_SIZE = 1; // each step along the lattice moves this many units
+    public static final String NORTH = "N";
+    public static final String EAST = "E";
+    public static final String SOUTH = "S";
 
     private MarkovChain mc; // Markov chain to determine walk direction
     private Coordinate curPos; // Current position of the walker
@@ -116,14 +119,14 @@ public class BreadCrumbWalker {
     private Coordinate getStepDirection() {
         Coordinate step = new Coordinate(0, 0);
         String state = mc.getStateString();
-        if (state.equals("N")) {
+        if (state.equals(NORTH)) {
             step.accumulate(new Coordinate(0, STEP_SIZE));
-        } else if (state.equals("E")) {
+        } else if (state.equals(EAST)) {
             step.accumulate(new Coordinate(STEP_SIZE, 0));
-        } else if (state.equals("S")) {
+        } else if (state.equals(SOUTH)) {
             step.accumulate(new Coordinate(0, -STEP_SIZE));
         } else {
-            step.accumulate(new Coordinate(-STEP_SIZE, 0));
+            step.accumulate(new Coordinate(-STEP_SIZE, 0)); //assuming this is W - WEST
         }
         return step;
     }
