@@ -73,13 +73,22 @@ public class RandomWalker {
     public void saveWalkToFile(String fname) throws IOException {
         PrintWriter writer = new PrintWriter(fname);
 
-        for (Coordinate coord : path) {
-            writer.println(String.format("(%d, %d)", coord.x, coord.y));
+        if (fname.endsWith(".dat")) {
+            // Output as integer stream
+            for (Coordinate coOrd : path) {
+                writer.print(coOrd.x + " " + coOrd.y + " ");
+            }
+        } else if (fname.endsWith(".txt")) {
+            // Output as coordinates
+            for (Coordinate coOrd : path) {
+                writer.println(String.format("(%d, %d)", coOrd.x, coOrd.y));
+            }
+        } else {
+            throw new IllegalArgumentException("Unsupported file format. Please use .dat or .txt extension.");
         }
 
         writer.close();
     }
-
     /**
      * Private helper method for walk().
      * Given the current state of the Markov chain,
