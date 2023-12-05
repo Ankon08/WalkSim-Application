@@ -20,3 +20,8 @@ Refactoring
    Description of fix: Consider using an enum or constants for cardinal directions to enhance readability
                        and avoid magic strings.
 
+4. File: MarkovChain.java
+   Location (method/approx. line #): isValidTransitionMatrix(FloatMatrix M), Line 185
+   Issue Identified: Unused variable sum in the isValidTransitionMatrix method
+   Description of fix: Remove the line sum = 0.0; as the variable sum is calculated but not used in the subsequent code.
+

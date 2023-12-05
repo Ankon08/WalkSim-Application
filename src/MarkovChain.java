@@ -182,7 +182,6 @@ public class MarkovChain {
             if (Math.abs(sum - 1.0) > FloatMatrix.EPSILON) {
                 return false;
             }
-            sum = 0.0;
         }
 
         return true;
