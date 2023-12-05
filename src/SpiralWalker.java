@@ -55,6 +55,12 @@ public class SpiralWalker {
         return path;
     }
 
+    /**
+     * Adds the current position to the path.
+     * This method creates a new Coordinate object using the current x and y coordinates
+     * of the SpiralWalker's position and adds it to the path list.
+     * It is a private helper method used internally to update the walker's path during the walk.
+     */
     private void addToPath() {
         path.add(new Coordinate(curPos.x, curPos.y));
     }
