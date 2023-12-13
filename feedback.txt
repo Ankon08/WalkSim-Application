@@ -1,0 +1,10 @@
+Design (/4): 4.0
+UML (/4): 4.0
+Implementation (/16): 16.0
+Testing (/4): 4.0
+Refactor Description (/4): 4.0
+Refactor Impl. (/4): 4.0
+Code Clarity (/2): 2.0
+Document Clarity (/2): 2.0
+Grade: 40
+Comments: Great Work!
